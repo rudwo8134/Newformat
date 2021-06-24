@@ -1,6 +1,43 @@
 import styled from 'styled-components'
 import {MdKeyboardArrowRight,MdArrowForward} from 'react-icons/md'
 
+export const Mousecontainer = styled.div`
+position: absolute;
+bottom: 10%;
+left:50%;
+transform: translate(-50%,10%);
+`
+export const Mouse= styled.div`
+color: black;
+width: 2.5rem;
+height: 4rem;
+border: 4px solid #000;
+border-radius: 60px;
+&:before{
+  content: '';
+  width: 0.2rem;
+  height: 2rem;
+  position: absolute;
+  top:30px;
+  background-color: #000;
+  left: 50%;
+  transform: translate(-50%);
+  border-radius: 50%;
+  opacity: 1;
+  animation: mouse 2s infinite;
+  @keyframes mouse {
+    from{
+      opacity: 1;
+      top:0px;
+    }
+    to{
+      opacity: 0;
+      top:30px;
+    }
+  }
+}
+`
+
 export const HeroContainer = styled.div`
   background: #0c0c0c;
   display: flex;
@@ -32,6 +69,9 @@ export const HeroBg = styled.div`
   width: 100%;
   height: 100%;
   overflow: hidden;
+  transform: ${({scroll})=>`translateY(${scroll*0.1}px)`};
+  opacity: ${({scroll})=>`${1-scroll*0.002}`};
+  transition: all 1s ease-in-out;
 `
 
 export const VideoBg = styled.video`
@@ -50,6 +90,11 @@ export const HeroContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: all 1s ease-in-out;
+  transform: ${({scroll})=>`
+  translateX(${-scroll*0.07}px)
+  `};
+   opacity: ${({scroll})=>`${1-scroll*0.002}`};
 `
 export const HeroH1 = styled.h1`
     color:#fff;

@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import Video from '../../video/video-2.mp4'
+import Video from '../../video/Pexels Videos 1550080.mp4'
 import {Button} from '../../components/ButtonElement'
 import {
   HeroContainer,
@@ -10,20 +10,28 @@ import {
   HeroP,
   HeroBtnWrapper,
   ArrowForward,
-  ArrowRight
+  ArrowRight,
+  Mouse,
+  Mousecontainer
+
 
 } from './heroelement'
-const HeroSection = () => {
+const HeroSection = ({ScrollYvalue}) => {
   const [hover,setHover] = useState(false)
   const onHover = () =>{
     setHover(!hover)
   }
+ 
+  console.log(ScrollYvalue)
   return (
     <HeroContainer>
-      <HeroBg>
+      <HeroBg scroll={ScrollYvalue}>
         <VideoBg src={Video} autoPlay loop muted type='video/mp4'/>
-      </HeroBg>
-      <HeroContent>
+          <Mousecontainer>
+        <Mouse></Mouse>
+        </Mousecontainer>
+        </HeroBg>
+      <HeroContent scroll={ScrollYvalue}>
         <HeroH1>Eric is  developer</HeroH1>
         <HeroP>
           Let's talk with Eric. and then see the how to hire hime.
@@ -37,6 +45,7 @@ const HeroSection = () => {
           Get started {hover ? <ArrowForward/> : <ArrowRight/> }</Button>
         </HeroBtnWrapper>
       </HeroContent>
+      
     </HeroContainer>
   )
 }
